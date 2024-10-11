@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-set filename="%~1"
+set filename="%~nx1"
 echo mejorar scans...
 
 echo procesando archivo: %filename%
@@ -25,10 +25,12 @@ for %%f in (pdfcleaner_out*.jpg) do (
 
 ::img 2 pdf
 echo generando pdf
-magick pdfcleaner_*.jpg mejorado_%filename%
+magick pdfcleaner_final-*.jpg -compress jpeg mejorado_%filename%
 
 ::delete temp files
 echo borrando archivos temporales
 del pdfcleaner_*.jpg
 
 echo ******** mejora terminada, archivo listo *********.
+
+pause
